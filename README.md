@@ -16,6 +16,15 @@ Ushbu loyiha **Java Spring Boot** va **Thymeleaf** yordamida yaratilgan oddiy CR
 
 ---
 
+## ▶️ Tezkor ishga tushirish
+
+```bash
+mvn spring-boot:run
+```
+Brauzerda oching: **http://localhost:8080/students**
+
+---
+
 ## 🛠 Texnologiyalar
 
 | Texnologiya | Versiya | Maqsad |
