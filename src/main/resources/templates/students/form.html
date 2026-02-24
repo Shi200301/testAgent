@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uz" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${formTitle}">Talaba Formasi</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #333; }
+        .container { max-width: 520px; margin: 60px auto; padding: 0 20px; }
+        .card { background: white; border-radius: 12px; padding: 36px;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        h1 { font-size: 1.5rem; margin-bottom: 24px; color: #2c3e50; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; color: #555; }
+        input[type="text"], input[type="email"] {
+            width: 100%; padding: 10px 14px; border: 1px solid #ddd;
+            border-radius: 8px; font-size: 1rem; transition: border-color 0.2s;
+        }
+        input:focus { outline: none; border-color: #3498db; }
+        .error { color: #e74c3c; font-size: 0.85rem; margin-top: 4px; }
+        .btn { display: inline-block; padding: 10px 22px; border-radius: 8px;
+               font-size: 0.95rem; cursor: pointer; border: none; text-decoration: none; }
+        .btn-primary { background: #3498db; color: white; }
+        .btn-primary:hover { background: #2980b9; }
+        .btn-secondary { background: #95a5a6; color: white; margin-left: 10px; }
+        .btn-secondary:hover { background: #7f8c8d; }
+        .btn-group { margin-top: 8px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 th:text="${formTitle}">Talaba Formasi</h1>
+
+        <form th:action="${student.id == null ? '/students' : '/students/' + student.id}"
+              th:object="${student}"
+              method="post">
+
+            <div class="form-group">
+                <label for="name">Ism *</label>
+                <input type="text" id="name" th:field="*{name}" placeholder="Talabaning ismi"/>
+                <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="email@example.com"/>
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Kurs</label>
+                <input type="text" id="course" th:field="*{course}" placeholder="Masalan: Java, Python..."/>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn btn-primary">💾 Saqlash</button>
+                <a th:href="@{/students}" class="btn btn-secondary">✖ Bekor qilish</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
